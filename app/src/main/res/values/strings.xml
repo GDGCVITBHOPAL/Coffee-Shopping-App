@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Caffy Cart</string>
     <string name="button">threeDots</string>
+    <string name="login">Login</string>
+    <string name="signup">SignUp</string>
+    <string name="logo">CaffyCart Logo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
