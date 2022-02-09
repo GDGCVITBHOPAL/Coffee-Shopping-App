@@ -86,7 +86,8 @@
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="@+id/topBar"
         app:layout_constraintTop_toTopOf="@+id/topBar"
-        app:srcCompat="@drawable/caffy_cart_logo" />
+        app:srcCompat="@drawable/caffy_cart_logo"
+        android:contentDescription="@string/button"/>
 
     <TextView
         android:id="@+id/textView2"

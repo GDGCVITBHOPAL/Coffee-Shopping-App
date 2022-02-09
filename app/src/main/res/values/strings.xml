@@ -6,4 +6,10 @@
     <string name="logo">CaffyCart Logo</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="google_login">Google Login</string>
+    <string name="facebook_login">Facebook Login</string>
+    <string name="github_login">Github Login</string>
+    <string name="google_photo">Google Photo</string>
+    <string name="facebook_photo">Facebook Photo</string>
+    <string name="github_photo">GitHub Photo</string>
 </resources>

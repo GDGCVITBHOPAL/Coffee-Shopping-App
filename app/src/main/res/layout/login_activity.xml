@@ -122,7 +122,7 @@
         android:elevation="10dp"
         android:hint="@string/email"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColorHint="#80000000"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/cardView"
@@ -138,12 +138,111 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:textColorHint="#80000000"
         android:inputType="textPassword"
         android:hint="@string/password"
+        android:autofillHints="password"
         app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/cardView2" />
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        android:importantForAutofill="yes" />
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.05">
+
+    </TableRow>
+
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/neumorphFloatingActionButton2"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:contentDescription="@string/facebook_login"
+        app:layout_constraintBottom_toBottomOf="@+id/tableRow2"
+        app:layout_constraintEnd_toEndOf="@+id/tableRow2"
+        app:layout_constraintStart_toStartOf="@+id/tableRow2"
+        app:layout_constraintTop_toTopOf="@+id/tableRow2"
+        app:neumorph_shadowColorDark="#a47467"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat">
+
+    </soup.neumorphism.NeumorphFloatingActionButton>
+
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/neumorphFloatingActionButton3"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:contentDescription="@string/github_login"
+        app:layout_constraintBottom_toBottomOf="@+id/tableRow2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="@+id/tableRow2"
+        app:layout_constraintTop_toTopOf="@+id/tableRow2"
+        app:neumorph_shadowColorDark="#a47467"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat">
+
+    </soup.neumorphism.NeumorphFloatingActionButton>
+
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/neumorphFloatingActionButton"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/google_login"
+        app:layout_constraintBottom_toBottomOf="@+id/tableRow2"
+        app:layout_constraintEnd_toEndOf="@+id/tableRow2"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tableRow2"
+        app:neumorph_shadowColorDark="#a47467"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeType="flat">
+
+    </soup.neumorphism.NeumorphFloatingActionButton>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/neumorphFloatingActionButton"
+        app:layout_constraintEnd_toEndOf="@+id/neumorphFloatingActionButton"
+        app:layout_constraintStart_toStartOf="@+id/neumorphFloatingActionButton"
+        app:layout_constraintTop_toTopOf="@+id/neumorphFloatingActionButton"
+        app:srcCompat="@drawable/google_logo"
+        android:contentDescription="@string/google_photo"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/facebook_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/neumorphFloatingActionButton2"
+        app:layout_constraintEnd_toEndOf="@+id/neumorphFloatingActionButton2"
+        app:layout_constraintStart_toStartOf="@+id/neumorphFloatingActionButton2"
+        app:layout_constraintTop_toTopOf="@+id/neumorphFloatingActionButton2"
+        app:srcCompat="@drawable/facebook_logo"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/neumorphFloatingActionButton3"
+        app:layout_constraintEnd_toEndOf="@+id/neumorphFloatingActionButton3"
+        app:layout_constraintStart_toStartOf="@+id/neumorphFloatingActionButton3"
+        app:layout_constraintTop_toTopOf="@+id/neumorphFloatingActionButton3"
+        app:srcCompat="@drawable/github_logo"
+        android:contentDescription="@string/github_photo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
