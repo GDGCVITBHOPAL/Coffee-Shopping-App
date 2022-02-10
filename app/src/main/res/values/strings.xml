@@ -12,4 +12,6 @@
     <string name="google_photo">Google Photo</string>
     <string name="facebook_photo">Facebook Photo</string>
     <string name="github_photo">GitHub Photo</string>
+    <string name="login_with">Login with</string>
+    <string name="not_acc">Does not have an Account? SignUp</string>
 </resources>
