@@ -191,30 +191,97 @@
                 app:cardElevation="10dp"
                 app:cardCornerRadius="25dp"
                 android:backgroundTint="#FFE4C4"
-                app:layout_constraintBottom_toTopOf="@id/card7"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/card5">
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card7"
+            <EditText
+                android:id="@+id/editTextTextPersonName"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                app:cardElevation="10dp"
-                app:cardCornerRadius="25dp"
-                android:backgroundTint="#FFE4C4"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card6">
+                android:layout_height="50dp"
+                android:textSize="20sp"
+                android:elevation="10dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:inputType="textPersonName"
+                android:hint="@string/full_name"
+                android:textColorHint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/card1"
+                app:layout_constraintEnd_toEndOf="@+id/card1"
+                app:layout_constraintStart_toStartOf="@+id/card1"
+                app:layout_constraintTop_toTopOf="@+id/card1"
+                android:importantForAutofill="yes" />
 
-            </androidx.cardview.widget.CardView>
+            <EditText
+                android:id="@+id/editTextNumberSigned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned"
+                android:textSize="20sp"
+                android:elevation="10dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:hint="@string/age"
+                android:textColorHint="@color/black"
+                android:importantForAutofill="no"
+                app:layout_constraintBottom_toBottomOf="@+id/card2"
+                app:layout_constraintEnd_toEndOf="@+id/card2"
+                app:layout_constraintStart_toStartOf="@+id/card2"
+                app:layout_constraintTop_toTopOf="@+id/card2" />
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:textSize="20sp"
+                android:elevation="10dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:hint="@string/date_of_birth"
+                android:textColorHint="@color/black"
+                android:importantForAutofill="no"
+                app:layout_constraintBottom_toBottomOf="@+id/card3"
+                app:layout_constraintEnd_toEndOf="@+id/card3"
+                app:layout_constraintStart_toStartOf="@+id/card3"
+                app:layout_constraintTop_toTopOf="@+id/card3" />
+
+            <EditText
+                android:id="@+id/editTextTextEmailAddress2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                app:layout_constraintBottom_toBottomOf="@+id/card4"
+                app:layout_constraintEnd_toEndOf="@+id/card4"
+                app:layout_constraintStart_toStartOf="@+id/card4"
+                app:layout_constraintTop_toTopOf="@+id/card4" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintBottom_toBottomOf="@+id/card5"
+                app:layout_constraintEnd_toEndOf="@+id/card5"
+                app:layout_constraintStart_toStartOf="@+id/card5"
+                app:layout_constraintTop_toTopOf="@+id/card5" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone"
+                app:layout_constraintBottom_toBottomOf="@+id/card6"
+                app:layout_constraintEnd_toEndOf="@+id/card6"
+                app:layout_constraintStart_toStartOf="@+id/card6"
+                app:layout_constraintTop_toTopOf="@+id/card6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
