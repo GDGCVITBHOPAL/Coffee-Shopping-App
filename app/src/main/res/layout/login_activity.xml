@@ -110,9 +110,9 @@
         app:layout_constraintTop_toTopOf="@+id/topBar" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/enterLoginEmail"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:autofillHints="emailAddress"
@@ -133,9 +133,9 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/enterLoginPassword"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:autofillHints="password"
@@ -168,7 +168,7 @@
     </TableRow>
 
     <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/neumorphFloatingActionButton2"
+        android:id="@+id/loginWithFacebookBtn"
         style="@style/Widget.Neumorph.Button"
         android:layout_width="85dp"
         android:layout_height="85dp"
@@ -185,7 +185,7 @@
     </soup.neumorphism.NeumorphFloatingActionButton>
 
     <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/neumorphFloatingActionButton3"
+        android:id="@+id/loginWithGithubBtn"
         style="@style/Widget.Neumorph.Button"
         android:layout_width="85dp"
         android:layout_height="85dp"
@@ -203,7 +203,7 @@
     </soup.neumorphism.NeumorphFloatingActionButton>
 
     <soup.neumorphism.NeumorphFloatingActionButton
-        android:id="@+id/neumorphFloatingActionButton"
+        android:id="@+id/loginWithGoogleBtn"
         style="@style/Widget.Neumorph.Button"
         android:layout_width="85dp"
         android:layout_height="85dp"
@@ -225,10 +225,10 @@
         android:id="@+id/imageView2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/neumorphFloatingActionButton"
-        app:layout_constraintEnd_toEndOf="@+id/neumorphFloatingActionButton"
-        app:layout_constraintStart_toStartOf="@+id/neumorphFloatingActionButton"
-        app:layout_constraintTop_toTopOf="@+id/neumorphFloatingActionButton"
+        app:layout_constraintBottom_toBottomOf="@+id/loginWithGoogleBtn"
+        app:layout_constraintEnd_toEndOf="@+id/loginWithGoogleBtn"
+        app:layout_constraintStart_toStartOf="@+id/loginWithGoogleBtn"
+        app:layout_constraintTop_toTopOf="@+id/loginWithGoogleBtn"
         app:srcCompat="@drawable/google_logo"
         android:contentDescription="@string/google_photo"/>
 
@@ -237,10 +237,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:contentDescription="@string/facebook_photo"
-        app:layout_constraintBottom_toBottomOf="@+id/neumorphFloatingActionButton2"
-        app:layout_constraintEnd_toEndOf="@+id/neumorphFloatingActionButton2"
-        app:layout_constraintStart_toStartOf="@+id/neumorphFloatingActionButton2"
-        app:layout_constraintTop_toTopOf="@+id/neumorphFloatingActionButton2"
+        app:layout_constraintBottom_toBottomOf="@+id/loginWithFacebookBtn"
+        app:layout_constraintEnd_toEndOf="@+id/loginWithFacebookBtn"
+        app:layout_constraintStart_toStartOf="@+id/loginWithFacebookBtn"
+        app:layout_constraintTop_toTopOf="@+id/loginWithFacebookBtn"
         app:srcCompat="@drawable/facebook_logo"
         tools:ignore="ImageContrastCheck" />
 
@@ -248,10 +248,10 @@
         android:id="@+id/imageView4"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/neumorphFloatingActionButton3"
-        app:layout_constraintEnd_toEndOf="@+id/neumorphFloatingActionButton3"
-        app:layout_constraintStart_toStartOf="@+id/neumorphFloatingActionButton3"
-        app:layout_constraintTop_toTopOf="@+id/neumorphFloatingActionButton3"
+        app:layout_constraintBottom_toBottomOf="@+id/loginWithGithubBtn"
+        app:layout_constraintEnd_toEndOf="@+id/loginWithGithubBtn"
+        app:layout_constraintStart_toStartOf="@+id/loginWithGithubBtn"
+        app:layout_constraintTop_toTopOf="@+id/loginWithGithubBtn"
         app:srcCompat="@drawable/github_logo"
         android:contentDescription="@string/github_photo"/>
 
@@ -272,6 +272,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <soup.neumorphism.NeumorphButton
+        android:id="@+id/loginBtn"
         style="@style/Widget.Neumorph.Button"
         android:layout_width="160dp"
         android:layout_height="80dp"
@@ -291,12 +292,11 @@
         app:layout_constraintVertical_bias="0.05"/>
 
     <soup.neumorphism.NeumorphButton
+        android:id="@+id/redirectToSignUpBtn"
         style="@style/Widget.Neumorph.Button"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:gravity="center"
         android:text="@string/not_acc"
-        android:textAlignment="center"
         android:textSize="12sp"
         android:textStyle="bold"
         app:neumorph_shadowElevation="3dp"
@@ -313,7 +313,7 @@
     </soup.neumorphism.NeumorphButton>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/forgotPasswordButton"
         android:layout_width="150dp"
         android:layout_height="25dp"
         android:text="@string/forgot_password"
