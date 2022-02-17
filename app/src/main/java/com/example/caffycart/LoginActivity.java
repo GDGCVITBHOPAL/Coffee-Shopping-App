@@ -3,7 +3,6 @@ package com.example.caffycart;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -45,13 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Moving to the order creating activity
-        lgnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, OrderCreatingActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        lgnLogin.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, OrderCreatingActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
