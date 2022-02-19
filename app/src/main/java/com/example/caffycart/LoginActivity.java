@@ -35,6 +35,7 @@ import soup.neumorphism.NeumorphFloatingActionButton;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     private static final String TAG = "App";
     EditText lgnEmail, lgnPassword;
     NeumorphFloatingActionButton lgnGoogle, lgnFacebook, lgnGithub;
@@ -128,12 +129,12 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // SigningIn with Google
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                .requestEmail()
+//                .build();
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         lgnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
