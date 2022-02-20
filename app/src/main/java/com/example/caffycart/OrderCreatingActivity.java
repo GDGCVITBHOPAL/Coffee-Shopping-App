@@ -3,11 +3,9 @@ package com.example.caffycart;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,10 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.Objects;
 
 public class OrderCreatingActivity extends AppCompatActivity {
@@ -33,20 +28,16 @@ public class OrderCreatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_creating);
-        // This will remove the action bar
-        Objects.requireNonNull(getSupportActionBar()).hide();
+
         setupCoffeeList();
         setupOzSpinner();
         setupCoffeeTypeSpinner();
         Button showOrder = findViewById(R.id.showOrderSummary);
-        showOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent summaryPage = new Intent(OrderCreatingActivity.this, OrderSummaryActivity.class);
-                OrderValues summary = generateSummary();
-                summaryPage.putExtra("Summary", summary);
-                startActivity(summaryPage);
-            }
+        showOrder.setOnClickListener(view -> {
+            Intent summaryPage = new Intent(OrderCreatingActivity.this, OrderSummaryActivity.class);
+            OrderValues summary = generateSummary();
+            summaryPage.putExtra("Summary", summary);
+            startActivity(summaryPage);
         });
 
     }
@@ -59,15 +50,15 @@ public class OrderCreatingActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.logout:
-                FirebaseAuth.getInstance().signOut();
-                Toast.makeText(OrderCreatingActivity.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(OrderCreatingActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+        if (item.getItemId() == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(OrderCreatingActivity.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(OrderCreatingActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -92,6 +83,7 @@ public class OrderCreatingActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);

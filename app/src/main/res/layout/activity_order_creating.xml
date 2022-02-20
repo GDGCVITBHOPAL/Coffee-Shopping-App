@@ -28,12 +28,11 @@
             android:hint="@string/user_name"
             android:padding="10dp">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:id="@+id/name_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:editable="false"
-                android:text="@string/user_name_text" />
+                android:hint="@string/user_name_text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -155,12 +154,14 @@
             <TextView
 
                 android:id="@+id/quantity_text_view"
-                android:layout_width="wrap_content"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="8dp"
                 android:text="1"
-                android:textSize="14sp" />
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
             <Button
                 android:layout_width="48dp"

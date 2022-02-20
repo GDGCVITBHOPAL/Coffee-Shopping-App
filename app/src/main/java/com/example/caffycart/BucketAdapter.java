@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class BucketAdapter extends RecyclerView.Adapter<BucketAdapter.BucketViewHolder> {
 
-    private CoffeeBucket[] bucket;
+    private final CoffeeBucket[] bucket;
 
     public BucketAdapter(CoffeeBucket[] bucket) {
         this.bucket = bucket;
@@ -37,8 +37,8 @@ public class BucketAdapter extends RecyclerView.Adapter<BucketAdapter.BucketView
 
     static class BucketViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView thingImage;
-        private TextView thingTitle, thingDescription;
+        private final ImageView thingImage;
+        private final TextView thingTitle, thingDescription;
 
 
         public BucketViewHolder(@NonNull View itemView) {
