@@ -1,8 +1,6 @@
 package com.example.caffycart;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,16 +8,9 @@ import android.text.TextUtils;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Objects;
 import soup.neumorphism.NeumorphButton;
@@ -129,35 +120,29 @@ public class SignUpActivity extends AppCompatActivity {
             progressDialog.show();
 
             // Registering the user in the firebase
-            firebaseAuth.createUserWithEmailAndPassword(strSgnEmail, strSgnPassword).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    progressDialog.dismiss();
+            firebaseAuth.createUserWithEmailAndPassword(strSgnEmail, strSgnPassword).addOnSuccessListener(authResult -> {
+                progressDialog.dismiss();
 
-                    HashMap<String, Object> data = new HashMap<>();
-                    data.put("Name", strSgnFullName);
-                    data.put("Age", strSgnAge);
-                    data.put("Date Of Birth", strSgnDOB);
-                    data.put("Email", strSgnEmail);
-                    data.put("Password", strSgnPassword);
-                    data.put("Phone Number", strSgnPhoneNumber);
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("Name", strSgnFullName);
+                data.put("Age", strSgnAge);
+                data.put("Date Of Birth", strSgnDOB);
+                data.put("Email", strSgnEmail);
+                data.put("Password", strSgnPassword);
+                data.put("Phone Number", strSgnPhoneNumber);
 
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-                    databaseReference.child(strSgnFullName).setValue(data);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+                databaseReference.child(strSgnFullName).setValue(data);
 
-                    // going to login page
-                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                    Toast.makeText(SignUpActivity.this, "User Registered", Toast.LENGTH_SHORT).show();
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(intent);
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "Registration Failed! "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                // going to login page
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                Toast.makeText(SignUpActivity.this, "User Registered", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(intent);
+                finish();
+            }).addOnFailureListener(e -> {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Registration Failed! "+e.getMessage(), Toast.LENGTH_SHORT).show();
             });
         });
 

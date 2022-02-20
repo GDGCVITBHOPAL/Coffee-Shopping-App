@@ -1,15 +1,12 @@
 package com.example.caffycart;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.VideoView;
-
 import java.util.Objects;
 
 public class SplashActivity extends AppCompatActivity {
@@ -32,21 +29,13 @@ public class SplashActivity extends AppCompatActivity {
         Uri videoSplash = Uri.parse(splash_path);
         coffeeSplash.setVideoURI(videoSplash);
         coffeeSplash.start();
-        coffeeSplash.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                coffeeSplash.start();
-            }
-        });
+        coffeeSplash.setOnCompletionListener(mediaPlayer -> coffeeSplash.start());
 
         //calling new activity
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         },totalSplashScreenTime );
 
     }

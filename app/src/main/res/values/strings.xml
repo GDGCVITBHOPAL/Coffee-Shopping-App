@@ -37,7 +37,10 @@
     <string name="order_summary">Order Summary</string>
     <string name="price">0.00 Rs</string>
     <string name="place_order">Place Order</string>
-    <!--    <string name="default_web_client_id">34806338637-2q1m4kq4fa00gt5dq0i1lfkirfef0612.apps.googleusercontent.com</string>-->
+    <string name="facebook_app_id">2745116572464862</string>
+    <string name="fb_login_protocol_scheme">fb2745116572464862</string>
+    <string name="facebook_client_token">41bec17c309c64c9f37b5abbf707a2cd</string>
+    <string name="myDefault_web_client_id">34806338637-2q1m4kq4fa00gt5dq0i1lfkirfef0612.apps.googleusercontent.com</string>
 
     <string-array name="cup_size">
         <item>3oz</item>
