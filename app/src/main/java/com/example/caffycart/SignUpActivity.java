@@ -1,6 +1,8 @@
 package com.example.caffycart;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +10,20 @@ import android.text.TextUtils;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.facebook.CallbackManager;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
+import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
 import soup.neumorphism.NeumorphButton;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -21,6 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     NeumorphButton sgnSignUp;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
+    CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +69,20 @@ public class SignUpActivity extends AppCompatActivity {
             // To-do
 
             //checking the name
-            if(TextUtils.isEmpty(strSgnFullName)) {
+            if (TextUtils.isEmpty(strSgnFullName)) {
                 sgnFullName.setError("Invalid Name");
                 sgnFullName.requestFocus();
                 return;
             }
 
             //checking the age
-            if(TextUtils.isEmpty(strSgnAge)) {
+            if (TextUtils.isEmpty(strSgnAge)) {
                 sgnAge.setError("Invalid Age");
                 sgnAge.requestFocus();
                 return;
-            }
-            else {
+            } else {
                 int ageValue = Integer.parseInt(strSgnAge);
-                if(ageValue<5 || ageValue>150) {
+                if (ageValue < 5 || ageValue > 150) {
                     sgnAge.setError("Invalid Age");
                     sgnAge.requestFocus();
                     return;
@@ -79,38 +90,38 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
             //checking the Date Of Birth
-            if(TextUtils.isEmpty(strSgnDOB)) {
+            if (TextUtils.isEmpty(strSgnDOB)) {
                 sgnDOB.setError("Invalid Date Of Birth");
                 sgnDOB.requestFocus();
                 return;
             }
 
             // checking the email
-            if(TextUtils.isEmpty(strSgnEmail)) {
+            if (TextUtils.isEmpty(strSgnEmail)) {
                 sgnEmail.setError("Invalid Email!");
                 sgnEmail.requestFocus();
                 return;
             }
-            if(!strSgnEmail.contains("@")) {
+            if (!strSgnEmail.contains("@")) {
                 sgnEmail.setError("Invalid Email!");
                 sgnEmail.requestFocus();
                 return;
             }
 
             //checking the password
-            if(TextUtils.isEmpty(strSgnPassword)) {
+            if (TextUtils.isEmpty(strSgnPassword)) {
                 sgnPassword.setError("Invalid Password!");
                 sgnPassword.requestFocus();
                 return;
             }
-            if(strSgnPassword.length()<5) {
+            if (strSgnPassword.length() < 5) {
                 sgnPassword.setError("Minimum 6 characters required");
                 sgnPassword.requestFocus();
                 return;
             }
 
             //checking the phone number
-            if(TextUtils.isEmpty(strSgnPhoneNumber) || strSgnPhoneNumber.length() != 10 || strSgnPhoneNumber.charAt(0)=='0') {
+            if (TextUtils.isEmpty(strSgnPhoneNumber) || strSgnPhoneNumber.length() != 10 || strSgnPhoneNumber.charAt(0) == '0') {
                 sgnPhoneNumber.setError("Invalid Phone Number");
                 sgnPhoneNumber.requestFocus();
                 return;
@@ -135,16 +146,39 @@ public class SignUpActivity extends AppCompatActivity {
                 databaseReference.child(strSgnFullName).setValue(data);
 
                 // going to login page
-                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                Toast.makeText(SignUpActivity.this, "User Registered", Toast.LENGTH_SHORT).show();
-                FirebaseAuth.getInstance().signOut();
-                startActivity(intent);
-                finish();
+                String newMobileNumber = "+91" + strSgnPhoneNumber;
+
+                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                        newMobileNumber,
+                        120,
+                        TimeUnit.SECONDS,
+                        SignUpActivity.this,
+                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                            @Override
+                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                Toast.makeText(SignUpActivity.this, "Verification Code send", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onVerificationFailed(@NonNull FirebaseException e) {
+                                Toast.makeText(SignUpActivity.this, "Error! Code not sent " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onCodeSent(@NonNull String backendOTP, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                                Intent intent = new Intent(SignUpActivity.this, OTPActivity.class);
+                                Toast.makeText(SignUpActivity.this, "Verifying Account", Toast.LENGTH_SHORT).show();
+                                FirebaseAuth.getInstance().signOut();
+                                intent.putExtra("mobileNo", strSgnPhoneNumber);
+                                intent.putExtra("backendOTP", backendOTP);
+                                startActivity(intent);
+                            }
+                        }
+                );
             }).addOnFailureListener(e -> {
                 progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Registration Failed! "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Verification Failed! " + e.getMessage(), Toast.LENGTH_SHORT).show();
             });
         });
-
     }
 }

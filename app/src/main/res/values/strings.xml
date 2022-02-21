@@ -41,6 +41,11 @@
     <string name="fb_login_protocol_scheme">fb2745116572464862</string>
     <string name="facebook_client_token">41bec17c309c64c9f37b5abbf707a2cd</string>
     <string name="myDefault_web_client_id">34806338637-2q1m4kq4fa00gt5dq0i1lfkirfef0612.apps.googleusercontent.com</string>
+    <string name="otp">OTP Verification</string>
+    <string name="otpText">A One Time Password(OTP) has been sent to your Phone Number</string>
+    <string name="resendOTP">Did not receive the OTP, click to <b>RESEND</b></string>
+    <string name="verifyOTP">Verify OTP</string>
+    <string name="zero">0</string>
 
     <string-array name="cup_size">
         <item>3oz</item>

@@ -149,9 +149,9 @@ public class OrderCreatingActivity extends AppCompatActivity {
     }
 
     private int calculatePrice(boolean addWhippedCream, boolean addChocolate, String coffeeType, String cupSize) {
-        int basePrice = 5;
-        double cupPrice = 5;
-        int coffeePrice = 20;
+        int basePrice = 10;
+        double cupPrice = 25;
+        int coffeePrice = 50;
         switch (cupSize) {
             case "3oz":
                 cupPrice = cupPrice * 1.5;
@@ -227,10 +227,10 @@ public class OrderCreatingActivity extends AppCompatActivity {
 
 
         if (addWhippedCream) {
-            basePrice = basePrice + 1;
+            basePrice = basePrice + 15;
         }
         if (addChocolate) {
-            basePrice = basePrice + 2;
+            basePrice = basePrice + 25;
         }
 
         return (int) (quantity * basePrice + coffeePrice + cupPrice);

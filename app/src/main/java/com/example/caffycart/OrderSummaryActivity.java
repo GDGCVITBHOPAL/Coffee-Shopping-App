@@ -13,9 +13,6 @@ public class OrderSummaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_summary);
-        // This will remove the action bar
-        Objects.requireNonNull(getSupportActionBar()).hide();
-        createOrderSummaryAndPayment();
     }
 
     private void createOrderSummaryAndPayment(){

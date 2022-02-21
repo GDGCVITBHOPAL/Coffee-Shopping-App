@@ -1,8 +1,6 @@
 package com.example.caffycart;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +9,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,13 +18,11 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.OAuthProvider;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import soup.neumorphism.NeumorphButton;
@@ -141,26 +132,9 @@ public class LoginActivity extends AppCompatActivity {
 
         // SigningIn with Facebook
         lgnFacebook.setOnClickListener(view -> {
-            callbackManager = CallbackManager.Factory.create();
-
-            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
-            LoginManager.getInstance().registerCallback(callbackManager,
-                    new FacebookCallback<LoginResult>() {
-                        @Override
-                        public void onSuccess(LoginResult loginResult) {
-                            handleFacebookAccessToken(loginResult.getAccessToken());
-                        }
-
-                        @Override
-                        public void onCancel() {
-                            // App code
-                        }
-
-                        @Override
-                        public void onError(@NonNull FacebookException exception) {
-                            // App code
-                        }
-                    });
+            Intent intent = new Intent(LoginActivity.this, fbAuth.class);
+            startActivity(intent);
+            finish();
         });
 
         // SigningIn with GitHub
@@ -188,11 +162,6 @@ public class LoginActivity extends AppCompatActivity {
                     pendingResultTask
                             .addOnSuccessListener(
                                     authResult -> {
-                                        // User is signed in.
-                                        // IdP data available in
-                                        // authResult.getAdditionalUserInfo().getProfile().
-                                        // The OAuth access token can also be retrieved:
-                                        // authResult.getCredential().getAccessToken().
                                     })
                             .addOnFailureListener(
                                     e -> Toast.makeText(LoginActivity.this, "signIn Failed!! "+e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -212,23 +181,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void handleFacebookAccessToken(AccessToken token) {
-
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = firebaseAuth.getCurrentUser();
-                        Intent intent = new Intent(LoginActivity.this, OrderCreatingActivity.class);
-                        Toast.makeText(LoginActivity.this, "SignedIn with Facebook", Toast.LENGTH_SHORT).show();
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Failed!! "+task.getException(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        // adding forget password functionality
+        lgnForgetPassword.setOnClickListener(view -> {
+            String emailForForgetPassword = lgnEmail.getText().toString();
+            if(TextUtils.isEmpty(emailForForgetPassword)) {
+                lgnEmail.setError("Invalid Email!");
+                lgnEmail.requestFocus();
+            }
+            else {
+                firebaseAuth.sendPasswordResetEmail(emailForForgetPassword).addOnSuccessListener(unused -> Toast.makeText(LoginActivity.this, "Reset Link has been sent to your email account.", Toast.LENGTH_LONG).show())
+                        .addOnFailureListener(e -> Toast.makeText(LoginActivity.this, "Error! Reset Link failed to send."+e.getMessage(), Toast.LENGTH_LONG).show());
+            }
+        });
     }
 
     @Override
