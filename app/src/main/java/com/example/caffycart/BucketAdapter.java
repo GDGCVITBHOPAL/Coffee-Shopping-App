@@ -25,21 +25,20 @@ public class BucketAdapter extends RecyclerView.Adapter<BucketAdapter.BucketView
     @NonNull
     @Override
     public BucketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.coffee_list_activity, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.coffee_list_activity, parent, false);
         return new BucketViewHolder(view) {
         };
     }
 
     @Override
     public void onBindViewHolder(@NonNull BucketViewHolder holder, int position) {
-        holder.bind(bucket[position],position);
+        holder.bind(bucket[position], position);
     }
 
-    static class BucketViewHolder extends RecyclerView.ViewHolder{
+    static class BucketViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView thingImage;
         private final TextView thingTitle, thingDescription;
-
 
         public BucketViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -48,13 +47,11 @@ public class BucketAdapter extends RecyclerView.Adapter<BucketAdapter.BucketView
             thingDescription = itemView.findViewById(R.id.text_view_coffee_description);
         }
 
-        public void bind(CoffeeBucket bucketElement, int position){
+        public void bind(CoffeeBucket bucketElement, int position) {
             String heading = (position + 1) + ". " + bucketElement.name;
             thingTitle.setText(heading);
             thingDescription.setText(bucketElement.description);
             thingImage.setImageResource(bucketElement.image);
         }
     }
-
-
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#FFF8DC"
+    android:background="@color/background"
     android:orientation="vertical"
     android:padding="36dp"
     tools:context=".OrderSummaryActivity">
@@ -23,10 +23,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:elevation="20dp"
-            android:text="dshcbsh"
             android:fontFamily="@font/signika"
+            android:text="dshcbsh"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
     </androidx.cardview.widget.CardView>
 
@@ -34,36 +34,41 @@
         android:id="@+id/paymentCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:visibility="invisible"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="6dp"
-        app:cardElevation="20dp"
-        android:visibility="invisible"
-        android:layout_margin="20dp">
+        app:cardElevation="20dp">
 
         <TextView
             android:id="@+id/paymentOrderId"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:visibility="invisible"
             android:fontFamily="@font/signika"
-            android:textColor="@color/black"
+            android:gravity="center"
             android:textAlignment="center"
-            android:gravity="center">
+            android:textColor="@color/black"
+            android:visibility="invisible">
 
         </TextView>
 
     </androidx.cardview.widget.CardView>
 
-    <Button
+    <soup.neumorphism.NeumorphButton
         android:id="@+id/confirm_order"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Widget.Neumorph.Button"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center"
         android:layout_marginTop="24dp"
-        android:textSize="30sp"
         android:fontFamily="@font/signika"
         android:text="@string/place_order"
-        app:strokeColor="#C13B3B" />
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:neumorph_shapeType="flat"
+        app:neumorph_backgroundColor="#D6AF9C"
+        app:neumorph_shadowColorDark="#a0522d"
+        app:neumorph_shadowElevation="5dp"/>
 
 </LinearLayout>

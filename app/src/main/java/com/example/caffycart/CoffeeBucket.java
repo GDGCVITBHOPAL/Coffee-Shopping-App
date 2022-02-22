@@ -11,5 +11,4 @@ public class CoffeeBucket {
         this.description = description;
         this.image = image;
     }
-
 }

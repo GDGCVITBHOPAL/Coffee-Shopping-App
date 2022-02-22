@@ -65,9 +65,6 @@ public class SignUpActivity extends AppCompatActivity {
             String strSgnPassword = sgnPassword.getText().toString().trim();
             String strSgnPhoneNumber = sgnPhoneNumber.getText().toString();
 
-            //checking the Date of birth
-            // To-do
-
             //checking the name
             if (TextUtils.isEmpty(strSgnFullName)) {
                 sgnFullName.setError("Invalid Name");

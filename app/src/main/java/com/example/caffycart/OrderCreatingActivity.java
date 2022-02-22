@@ -81,8 +81,6 @@ public class OrderCreatingActivity extends AppCompatActivity {
         }
         quantity = quantity + 1;
         display(quantity);
-
-
     }
 
     public void dec(View view) {
@@ -91,7 +89,6 @@ public class OrderCreatingActivity extends AppCompatActivity {
         }
         quantity = quantity - 1;
         display(quantity);
-
     }
 
     @SuppressLint("SetTextI18n")

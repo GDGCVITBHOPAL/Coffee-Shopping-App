@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_toStartOf="@id/card_view_project_icon_container"
         android:fontFamily="@font/signika"
-        android:textColor="#272727"
         android:paddingLeft="10dp"
+        android:textColor="#272727"
         android:textSize="20sp"
         tools:text="The App Title" />
 
@@ -50,10 +49,6 @@
             android:scaleType="centerCrop"
             tools:src="@drawable/affogatocoffee" />
 
-
     </androidx.cardview.widget.CardView>
-
-
-
 
 </RelativeLayout>

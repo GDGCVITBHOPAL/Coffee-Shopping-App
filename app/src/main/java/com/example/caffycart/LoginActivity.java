@@ -1,6 +1,7 @@
 package com.example.caffycart;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.facebook.CallbackManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -22,9 +24,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.OAuthProvider;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import soup.neumorphism.NeumorphButton;
 import soup.neumorphism.NeumorphFloatingActionButton;
 
@@ -45,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if(currentUser != null) {
+        if (currentUser != null) {
             Intent intent = new Intent(LoginActivity.this, OrderCreatingActivity.class);
             startActivity(intent);
         }
@@ -87,14 +91,14 @@ public class LoginActivity extends AppCompatActivity {
             String strLgnPassword = lgnPassword.getText().toString();
 
             // checking the email
-            if(TextUtils.isEmpty(strLgnEmail)) {
+            if (TextUtils.isEmpty(strLgnEmail)) {
                 lgnEmail.setError("Invalid Email!");
                 lgnEmail.requestFocus();
                 return;
             }
 
             //checking the password
-            if(TextUtils.isEmpty(strLgnPassword)) {
+            if (TextUtils.isEmpty(strLgnPassword)) {
                 lgnPassword.setError("Invalid Password!");
                 lgnPassword.requestFocus();
                 return;
@@ -113,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }).addOnFailureListener(e -> {
                 progressDialog.dismiss();
-                Toast.makeText(LoginActivity.this, "Login Failed! "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login Failed! " + e.getMessage(), Toast.LENGTH_SHORT).show();
             });
         });
 
@@ -140,11 +144,10 @@ public class LoginActivity extends AppCompatActivity {
         // SigningIn with GitHub
         lgnGithub.setOnClickListener(view -> {
             String emailForGitHub = lgnEmail.getText().toString();
-            if(TextUtils.isEmpty(emailForGitHub)) {
+            if (TextUtils.isEmpty(emailForGitHub)) {
                 lgnEmail.setError("Invalid Email!");
                 lgnEmail.requestFocus();
-            }
-            else {
+            } else {
                 OAuthProvider.Builder provider = OAuthProvider.newBuilder("github.com");
                 provider.addCustomParameter("login", emailForGitHub);
 
@@ -164,7 +167,7 @@ public class LoginActivity extends AppCompatActivity {
                                     authResult -> {
                                     })
                             .addOnFailureListener(
-                                    e -> Toast.makeText(LoginActivity.this, "signIn Failed!! "+e.getMessage(), Toast.LENGTH_SHORT).show());
+                                    e -> Toast.makeText(LoginActivity.this, "signIn Failed!! " + e.getMessage(), Toast.LENGTH_SHORT).show());
                 } else {
                     firebaseAuth
                             .startActivityForSignInWithProvider(/* activity= */ LoginActivity.this, provider.build())
@@ -176,7 +179,7 @@ public class LoginActivity extends AppCompatActivity {
                                         finish();
                                     })
                             .addOnFailureListener(
-                                    e -> Toast.makeText(LoginActivity.this, "signIn Failed!! "+e.getMessage(), Toast.LENGTH_SHORT).show());
+                                    e -> Toast.makeText(LoginActivity.this, "signIn Failed!! " + e.getMessage(), Toast.LENGTH_SHORT).show());
                 }
             }
         });
@@ -184,13 +187,12 @@ public class LoginActivity extends AppCompatActivity {
         // adding forget password functionality
         lgnForgetPassword.setOnClickListener(view -> {
             String emailForForgetPassword = lgnEmail.getText().toString();
-            if(TextUtils.isEmpty(emailForForgetPassword)) {
+            if (TextUtils.isEmpty(emailForForgetPassword)) {
                 lgnEmail.setError("Invalid Email!");
                 lgnEmail.requestFocus();
-            }
-            else {
+            } else {
                 firebaseAuth.sendPasswordResetEmail(emailForForgetPassword).addOnSuccessListener(unused -> Toast.makeText(LoginActivity.this, "Reset Link has been sent to your email account.", Toast.LENGTH_LONG).show())
-                        .addOnFailureListener(e -> Toast.makeText(LoginActivity.this, "Error! Reset Link failed to send."+e.getMessage(), Toast.LENGTH_LONG).show());
+                        .addOnFailureListener(e -> Toast.makeText(LoginActivity.this, "Error! Reset Link failed to send." + e.getMessage(), Toast.LENGTH_LONG).show());
             }
         });
     }
@@ -199,17 +201,16 @@ public class LoginActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-            if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Toast.makeText(this, "SignIn with Google Successful", Toast.LENGTH_SHORT).show();
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
-                Toast.makeText(this, "Google Auth Failed with "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Google Auth Failed with " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void firebaseAuthWithGoogle(String idToken) {

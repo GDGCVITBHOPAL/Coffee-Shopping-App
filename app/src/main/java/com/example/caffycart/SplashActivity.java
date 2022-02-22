@@ -1,18 +1,20 @@
 package com.example.caffycart;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 import android.widget.VideoView;
+
 import java.util.Objects;
 
 public class SplashActivity extends AppCompatActivity {
 
     VideoView coffeeSplash;
-    public final int totalSplashScreenTime = 50;
+    public final int totalSplashScreenTime = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        },totalSplashScreenTime );
+        }, totalSplashScreenTime);
 
     }
 }

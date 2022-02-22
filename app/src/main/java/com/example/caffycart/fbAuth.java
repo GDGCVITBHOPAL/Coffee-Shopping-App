@@ -1,9 +1,11 @@
 package com.example.caffycart;
 
 import androidx.annotation.NonNull;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -13,6 +15,7 @@ import com.facebook.login.LoginResult;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Arrays;
 
 public class fbAuth extends LoginActivity {
@@ -32,20 +35,20 @@ public class fbAuth extends LoginActivity {
 
                     @Override
                     public void onCancel() {
-                        // App code
                     }
 
                     @Override
                     public void onError(@NonNull FacebookException exception) {
-                        // App code
                     }
                 });
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
     private void handleFacebookAccessToken(AccessToken token) {
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
@@ -58,7 +61,7 @@ public class fbAuth extends LoginActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(fbAuth.this, "Failed!! "+task.getException(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(fbAuth.this, "Failed!! " + task.getException(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
