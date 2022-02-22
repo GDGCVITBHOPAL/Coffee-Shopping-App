@@ -26,18 +26,18 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="85dp"
             android:padding="10dp">
 
             <EditText
                 android:id="@+id/name_field"
                 android:layout_width="match_parent"
-                android:layout_height="20"
+                android:layout_height="60dp"
                 android:textColor="@color/black"
                 android:background="#fff"
-
+                android:layout_gravity="center"
                 android:fontFamily="@font/balsamsans_bold"
-                android:textColorHint="#80000000"
+                android:textColorHint="@color/black"
                 android:hint="@string/user_name_text" />
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CaffyCart">
         <activity
-            android:name=".PaymentReceipt"
-            android:exported="false" />
-        <activity
             android:name=".fbAuth"
             android:exported="false" />
         <activity

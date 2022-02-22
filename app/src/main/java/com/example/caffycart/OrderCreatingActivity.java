@@ -104,20 +104,20 @@ public class OrderCreatingActivity extends AppCompatActivity {
         RecyclerView list = findViewById(R.id.recycler_view_coffee_list);
 
         CoffeeBucket[] coffees = {
-                new CoffeeBucket("Affogato Coffee", "Price : 60 Rs", R.drawable.affogatocoffee),
-                new CoffeeBucket("Americano Coffee", "Price : 60 Rs", R.drawable.americanocoffee),
-                new CoffeeBucket("Black Coffee", "Price : 60 Rs", R.drawable.blackcofee),
-                new CoffeeBucket("Cappuccino Coffee", "Price : 60 Rs", R.drawable.cappuccinocoffee),
-                new CoffeeBucket("Cortado Coffee", "Price : 60 Rs", R.drawable.cortadocoffee),
-                new CoffeeBucket("Doppio Coffee", "Price : 60 Rs", R.drawable.doppiocoffee),
-                new CoffeeBucket("Espresso Coffee", "Price : 60 Rs", R.drawable.espressocoffee),
-                new CoffeeBucket("Flat White Coffee", "Price : 60 Rs", R.drawable.flat_whitecoffee),
-                new CoffeeBucket("Galão Coffee", "Price : 60 Rs", R.drawable.gal_ocoffee),
-                new CoffeeBucket("Irish Coffee", "Price : 60 Rs", R.drawable.irishcoffee),
-                new CoffeeBucket("Latte Coffee", "Price : 60 Rs", R.drawable.lattecofee),
-                new CoffeeBucket("Lungo Coffee", "Price : 60 Rs", R.drawable.lungocoffee),
-                new CoffeeBucket("Macchiato Coffee", "Price : 60 Rs", R.drawable.macchiatocoffee),
-                new CoffeeBucket("Mocha Coffee", "Price : 60 Rs", R.drawable.mochacoffee),
+                new CoffeeBucket("Affogato Coffee", "Price : 120 Rs", R.drawable.affogatocoffee),
+                new CoffeeBucket("Americano Coffee", "Price : 80 Rs", R.drawable.americanocoffee),
+                new CoffeeBucket("Black Coffee", "Price : 80 Rs", R.drawable.blackcofee),
+                new CoffeeBucket("Cappuccino Coffee", "Price : 99 Rs", R.drawable.cappuccinocoffee),
+                new CoffeeBucket("Cortado Coffee", "Price : 90 Rs", R.drawable.cortadocoffee),
+                new CoffeeBucket("Doppio Coffee", "Price : 70 Rs", R.drawable.doppiocoffee),
+                new CoffeeBucket("Espresso Coffee", "Price : 100 Rs", R.drawable.espressocoffee),
+                new CoffeeBucket("Flat White Coffee", "Price : 75 Rs", R.drawable.flat_whitecoffee),
+                new CoffeeBucket("Galão Coffee", "Price : 85 Rs", R.drawable.gal_ocoffee),
+                new CoffeeBucket("Irish Coffee", "Price : 50 Rs", R.drawable.irishcoffee),
+                new CoffeeBucket("Latte Coffee", "Price : 50 Rs", R.drawable.lattecofee),
+                new CoffeeBucket("Lungo Coffee", "Price : 110 Rs", R.drawable.lungocoffee),
+                new CoffeeBucket("Macchiato Coffee", "Price : 125 Rs", R.drawable.macchiatocoffee),
+                new CoffeeBucket("Mocha Coffee", "Price : 80 Rs", R.drawable.mochacoffee),
                 new CoffeeBucket("Red Eye Coffee", "Price : 60 Rs", R.drawable.red_eyecoffee)
 
         };
@@ -165,86 +165,86 @@ public class OrderCreatingActivity extends AppCompatActivity {
         int coffeePrice = 50;
         switch (cupSize) {
             case "3oz":
-                cupPrice = cupPrice + 20;
+                cupPrice = cupPrice + 30;
                 break;
             case "4.5oz":
-                cupPrice = cupPrice * 1.7;
+                cupPrice = cupPrice + 45;
                 break;
             case "5.5oz":
-                cupPrice = cupPrice * 1.9;
+                cupPrice = cupPrice + 55;
                 break;
             case "12oz":
-                cupPrice = cupPrice * 2;
+                cupPrice = cupPrice + 120;
                 break;
             case "14oz":
-                cupPrice = cupPrice * 2.3;
+                cupPrice = cupPrice + 140;
                 break;
             case "16oz":
-                cupPrice = cupPrice * 2.4;
+                cupPrice = cupPrice + 160;
                 break;
             default:
-                cupPrice = cupPrice * 2.5;
+                cupPrice = cupPrice + 250;
                 break;
         }
 
         switch (coffeeType) {
             case "Affogato":
-                coffeePrice = coffeePrice * 3;
+                coffeePrice = coffeePrice + 120;
                 break;
             case "Americano":
-                coffeePrice = coffeePrice * 3;
+                coffeePrice = coffeePrice + 80;
                 break;
             case "Black":
-                coffeePrice = coffeePrice * 2;
+                coffeePrice = coffeePrice + 80;
                 break;
             case "Cappuccino":
-                coffeePrice = coffeePrice * 2;
+                coffeePrice = coffeePrice + 99;
                 break;
             case "Cortado":
-                coffeePrice = coffeePrice * 3;
+                coffeePrice = coffeePrice + 90;
                 break;
             case "Doppio":
-                coffeePrice = coffeePrice * 3;
+                coffeePrice = coffeePrice + 70;
                 break;
 
             case "Espresso":
-                coffeePrice = coffeePrice * 4;
+                coffeePrice = coffeePrice + 100;
                 break;
             case "Flat White":
-                coffeePrice = coffeePrice * 2;
+                coffeePrice = coffeePrice + 75;
                 break;
             case "Galão":
-                coffeePrice = coffeePrice * 4;
+                coffeePrice = coffeePrice + 85;
                 break;
             case "Irish":
-                coffeePrice = coffeePrice * 5;
+                coffeePrice = coffeePrice + 50;
                 break;
             case "Latte":
-                coffeePrice = coffeePrice * 3;
+                coffeePrice = coffeePrice + 50;
                 break;
             case "Lungo":
-                coffeePrice = coffeePrice * 5;
+                coffeePrice = coffeePrice + 110;
                 break;
             case "Macchiato":
-                coffeePrice = coffeePrice * 5;
+                coffeePrice = coffeePrice + 125;
                 break;
             case "Mocha":
-                coffeePrice = coffeePrice * 3;
+                coffeePrice = coffeePrice + 80;
                 break;
             default:
-                coffeePrice = coffeePrice * 3;
+                coffeePrice = coffeePrice + 60;
                 break;
         }
 
 
         if (addWhippedCream) {
-            basePrice = basePrice + 15;
+            basePrice = basePrice + 35;
         }
         if (addChocolate) {
-            basePrice = basePrice + 25;
+            basePrice = basePrice + 55;
         }
 
-        return (int) (quantity * basePrice + coffeePrice + cupPrice);
+        return (int) ((quantity * (coffeePrice + cupPrice)) + basePrice);
     }
 
 

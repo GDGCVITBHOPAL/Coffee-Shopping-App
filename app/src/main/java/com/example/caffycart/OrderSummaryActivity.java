@@ -1,25 +1,24 @@
 package com.example.caffycart;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
-
 import org.json.JSONObject;
-
-import java.util.Objects;
 
 public class OrderSummaryActivity extends AppCompatActivity implements PaymentResultListener {
 
     Button pay;
-    TextView summaryList;
+    TextView summaryList, orderId;
+    CardView payOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +27,8 @@ public class OrderSummaryActivity extends AppCompatActivity implements PaymentRe
 
         Checkout.preload(getApplicationContext());
         pay = findViewById(R.id.confirm_order);
+        orderId = findViewById(R.id.paymentOrderId);
+        payOrder = findViewById(R.id.paymentCard);
 
         String price = getIntent().getStringExtra("priceToPay")+"00";
         int randomReferenceNumber = (int)(Math.random()*999998);
@@ -71,8 +72,7 @@ public class OrderSummaryActivity extends AppCompatActivity implements PaymentRe
 
                     checkout.open(activity, options);
 
-                } catch(Exception e) {
-
+                } catch(Exception ignored) {
                 }
             }
         });
@@ -82,9 +82,13 @@ public class OrderSummaryActivity extends AppCompatActivity implements PaymentRe
     private void createOrderSummaryAndPayment(){
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onPaymentSuccess(String s) {
         Toast.makeText(this, "Payment successful", Toast.LENGTH_LONG).show();
+        payOrder.setVisibility(View.VISIBLE);
+        orderId.setVisibility(View.VISIBLE);
+        orderId.setText("Order ID: "+s);
     }
 
     @Override
