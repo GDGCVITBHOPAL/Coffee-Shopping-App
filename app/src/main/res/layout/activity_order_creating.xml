@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:background="#FFF8DC">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,23 +15,29 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/redressed_regular"
             android:gravity="center"
             android:padding="2dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:text="@string/coffee_counter_heading"
-            android:textSize="30sp" />
+            android:textSize="45sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:hint="@string/user_name"
             android:padding="10dp">
 
             <EditText
                 android:id="@+id/name_field"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20"
+                android:textColor="@color/black"
+                android:background="#fff"
+
+                android:fontFamily="@font/balsamsans_bold"
+                android:textColorHint="#80000000"
                 android:hint="@string/user_name_text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -41,6 +47,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="5dp"
+            android:fontFamily="@font/chakrapetch_medium"
+            android:textColor="@color/black"
             android:text="@string/coffee_type"
             android:textSize="22sp" />
 
@@ -49,6 +57,7 @@
             android:id="@+id/recycler_view_coffee_list"
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            android:layout_margin="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/coffee_list_activity" />
 
@@ -65,6 +74,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center"
+                android:fontFamily="@font/chakrapetch_medium"
+                android:textColor="@color/black"
                 android:text="@string/text_view_toppings"
                 android:textSize="20sp" />
 
@@ -74,6 +85,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:checked="true"
+                android:fontFamily="@font/chakrapetch_medium"
+                android:textColor="@color/black"
                 android:text="@string/whipped_cream_check_box"
                 android:textSize="14sp" />
 
@@ -83,16 +96,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:checked="true"
+                android:fontFamily="@font/chakrapetch_medium"
+                android:textColor="@color/black"
                 android:text="@string/chocolate_checkbox"
                 android:textSize="14sp" />
 
-            <CheckBox
-                android:id="@+id/molasses_check_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/molasses_checkbox"
-                android:textSize="16sp" />
+
 
         </LinearLayout>
 
@@ -105,28 +114,34 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:gravity="center"
+                android:textColor="@color/black"
+                android:fontFamily="@font/chakrapetch_medium"
                 android:text="@string/select_coffee_number"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <Spinner
                 android:id="@+id/spinner_coffee_select"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="#000"
                 android:spinnerMode="dropdown" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:gravity="center"
+                android:fontFamily="@font/chakrapetch_medium"
+                android:textColor="@color/black"
                 android:text="@string/cup_size"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <Spinner
                 android:id="@+id/spinner_oz_select"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:backgroundTint="#000"
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>
@@ -141,15 +156,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:fontFamily="@font/chakrapetch_medium"
                 android:gravity="center"
                 android:text="@string/quantity"
-                android:textSize="22sp" />
+                android:textSize="45sp" />
 
             <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:onClick="inc"
-                android:text="@string/increment" />
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:text="@string/increment"
+                tools:ignore="UsingOnClickInXml" />
 
             <TextView
 
@@ -158,16 +179,19 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:padding="8dp"
-                android:text="1"
+                android:text="@string/zero"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="25sp" />
 
             <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
                 android:onClick="dec"
-                android:text="@string/decrement" />
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:text="@string/decrement"
+                tools:ignore="UsingOnClickInXml" />
 
         </LinearLayout>
 
@@ -177,6 +201,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:padding="10dp"
+            android:fontFamily="@font/signika"
+            android:textSize="30sp"
             android:text="@string/place_order_button" />
 
     </LinearLayout>

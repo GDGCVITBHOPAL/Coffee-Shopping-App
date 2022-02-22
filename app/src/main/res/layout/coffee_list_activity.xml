@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:layout_margin="5dp"
     android:background="@drawable/gradient_background"
-    android:padding="16dp">
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/text_view_coffee_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toStartOf="@id/card_view_project_icon_container"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/signika"
         android:textColor="#272727"
-        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:textSize="20sp"
         tools:text="The App Title" />
 
     <TextView
@@ -24,9 +27,11 @@
         android:layout_below="@id/text_view_coffee_name"
         android:layout_marginTop="8dp"
         android:layout_toStartOf="@id/card_view_project_icon_container"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/opensans_light"
+        android:paddingLeft="10dp"
         android:textColor="#000000"
         android:textSize="25sp"
+        android:textStyle="bold"
         tools:text="Price : 60 Rs" />
 
 

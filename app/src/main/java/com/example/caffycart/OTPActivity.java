@@ -221,7 +221,7 @@ public class OTPActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(!charSequence.toString().isEmpty()) {
-                    otp5.requestFocus();
+                    otp6.requestFocus();
                 }
             }
 

@@ -18,7 +18,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
-import java.util.Objects;
 
 public class OrderCreatingActivity extends AppCompatActivity {
 
@@ -28,15 +27,27 @@ public class OrderCreatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_creating);
-
         setupCoffeeList();
         setupOzSpinner();
         setupCoffeeTypeSpinner();
         Button showOrder = findViewById(R.id.showOrderSummary);
+
+        CheckBox WhippedCreamCheckBox = findViewById(R.id.Whipped_cream_checkBox);
+        boolean hasWhippedCream = WhippedCreamCheckBox.isChecked();
+        CheckBox chocolateCheckBox = findViewById(R.id.Chocolate_checkBox);
+        boolean hasChocolate = chocolateCheckBox.isChecked();
+        Spinner coffeeTypeSpinner = findViewById(R.id.spinner_coffee_select);
+        String coffeeType = coffeeTypeSpinner.getSelectedItem().toString();
+        Spinner coffeeCupSpinner = findViewById(R.id.spinner_oz_select);
+        String coffeeCup = coffeeCupSpinner.getSelectedItem().toString();
+
+        String price = "" + calculatePrice(hasWhippedCream, hasChocolate, coffeeType, coffeeCup);
+
         showOrder.setOnClickListener(view -> {
             Intent summaryPage = new Intent(OrderCreatingActivity.this, OrderSummaryActivity.class);
             OrderValues summary = generateSummary();
             summaryPage.putExtra("Summary", summary);
+            summaryPage.putExtra("priceToPay",price);
             startActivity(summaryPage);
         });
 
@@ -85,7 +96,7 @@ public class OrderCreatingActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
 
@@ -117,14 +128,14 @@ public class OrderCreatingActivity extends AppCompatActivity {
 
     private void setupOzSpinner() {
         Spinner cupSpinner = findViewById(R.id.spinner_oz_select);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cup_size, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cup_size, R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         cupSpinner.setAdapter(adapter);
     }
 
     private void setupCoffeeTypeSpinner() {
         Spinner cupSpinner = findViewById(R.id.spinner_coffee_select);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.coffee_type, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.coffee_type,R.layout.spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         cupSpinner.setAdapter(adapter);
     }
@@ -154,7 +165,7 @@ public class OrderCreatingActivity extends AppCompatActivity {
         int coffeePrice = 50;
         switch (cupSize) {
             case "3oz":
-                cupPrice = cupPrice * 1.5;
+                cupPrice = cupPrice + 20;
                 break;
             case "4.5oz":
                 cupPrice = cupPrice * 1.7;
