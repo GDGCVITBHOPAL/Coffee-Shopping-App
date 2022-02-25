@@ -24,7 +24,6 @@
             android:layout_margin="12dp"
             android:elevation="20dp"
             android:fontFamily="@font/signika"
-            android:text="dshcbsh"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

@@ -47,7 +47,6 @@ public class OrderCreatingActivity extends AppCompatActivity {
             Intent summaryPage = new Intent(OrderCreatingActivity.this, OrderSummaryActivity.class);
             OrderValues summary = generateSummary();
             summaryPage.putExtra("Summary", summary);
-            summaryPage.putExtra("priceToPay",price);
             startActivity(summaryPage);
         });
 
@@ -116,7 +115,6 @@ public class OrderCreatingActivity extends AppCompatActivity {
                 new CoffeeBucket("Macchiato Coffee", "Price : 125 Rs", R.drawable.macchiatocoffee),
                 new CoffeeBucket("Mocha Coffee", "Price : 80 Rs", R.drawable.mochacoffee),
                 new CoffeeBucket("Red Eye Coffee", "Price : 60 Rs", R.drawable.red_eyecoffee)
-
         };
 
         BucketAdapter adapter = new BucketAdapter(coffees);

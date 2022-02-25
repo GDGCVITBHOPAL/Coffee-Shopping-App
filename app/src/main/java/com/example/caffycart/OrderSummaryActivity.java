@@ -33,7 +33,6 @@ public class OrderSummaryActivity extends AppCompatActivity implements PaymentRe
         orderId = findViewById(R.id.paymentOrderId);
         payOrder = findViewById(R.id.paymentCard);
 
-        String price = getIntent().getStringExtra("priceToPay") + "00";
         int randomReferenceNumber = (int) (Math.random() * 999998);
         String randomString = String.valueOf(randomReferenceNumber);
 
@@ -49,6 +48,8 @@ public class OrderSummaryActivity extends AppCompatActivity implements PaymentRe
 
         summaryList.setText(summary);
 
+        String priceOfCart = order.price + "00";
+
         pay.setOnClickListener(view -> {
             Checkout checkout = new Checkout();
             checkout.setKeyID("rzp_test_Am86M3W8b09tLD");
@@ -59,11 +60,10 @@ public class OrderSummaryActivity extends AppCompatActivity implements PaymentRe
                 options.put("name", "Caffy Cart");
                 options.put("description", "Reference No. #" + randomString);
                 options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
-                //options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
                 options.put("theme.color", "#FFEBCE");
                 checkout.setImage(R.drawable.caffy_cart_logo);
                 options.put("currency", "INR");
-                options.put("amount", price);//pass amount in currency subunits
+                options.put("amount", priceOfCart);//pass amount in currency subunits
                 options.put("prefill.email", "");
                 options.put("prefill.contact", "");
                 JSONObject retryObj = new JSONObject();
