@@ -26,4 +26,5 @@ Thank you for visiting ❤!
   <tr>
     <td align="center"><a href="https://github.com/Tanay-Dwivedi"><img src="https://avatars.githubusercontent.com/u/91426152?v=4" width="100px;" alt=""/><br /><sub><b>Tanay Dwivedi</b></sub></td>
     <td align="center"><a href="https://github.com/ShankarLohar"><img src="https://avatars.githubusercontent.com/u/74100292?v=4" width="100px;" alt=""/><br /><sub><b>Shankar Lohar</b></sub></td>
+      </tr>
 </table>
